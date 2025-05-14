@@ -4,8 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    
+    <h1>Kvadratvienādojuma risināytājs</h1>
+    <input type="number" id="main_a"> <input type="number" id="main_b"> <input type="text" id="main_b=c">
+    <button type="button" onclick="aprekinat()">Aprēķinat</button>
+    <div class="rezultats" id="rezultats">...</div>
+
+    <script>
+        function disk(a, b, c){
+            return b*b-4-a*c;
+        }
+
+        function saknes(a, b, D){
+            if(D<0){
+                return false
+            }else{
+                var x1  = (-b + Math.sqrt(D)) / (2*a);
+                var x2  = (-b - Math.sqrt(D)) / (2*a);
+            }
+        }
+
+        function aprekinat(){
+            var a = Number(main_a.value);
+            var b = Number(main_b.value);
+            var c = Number(main_c.value);
+            
+            if(isNaN(a) || isNaN(b) || isNaN(c) || a===0){
+                rezultats.innerHTML = "Lūdzu ievadiet skaitļi!"
+            }
+
+            var  atb = saknes(a, b, disk(a, b, c));
+            if(atb===false){
+                rezultat.innerHTML = "Kvadrātvienādojumam nav sakņu."
+            }else{
+                rezultats.innerHTML = `Saknes: x1 = ${atb[0].toFixed(3)}, x2 = ${atb[1].toFixed(3)}`;
+            }
+        }
+
+    </script>
 </body>
 </html>
